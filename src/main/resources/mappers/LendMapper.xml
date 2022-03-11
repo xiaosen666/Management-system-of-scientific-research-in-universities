@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiudian.manage.mapper.LendMapper">
+    <resultMap id="LendMap" type="com.jiudian.manage.model.Lend">
+        <result column="userid" property="userid"/>
+        <result column="equiment" property="equiment"/>
+        <result column="num" property="num"/>
+        <result column="phone" property="phone"/>
+    </resultMap>
+    <insert id="Insert_a_record" parameterType="com.jiudian.manage.model.Lend">
+        insert into lend (userid,equiment,num,phone) values (#{userid},#{equiment},#{num},#{phone})
+    </insert>
+    <select id="Get_lend_list" parameterType="java.lang.String" resultMap="LendMap">
+        select * from lend where userid=#{userid}
+    </select>
+</mapper>
