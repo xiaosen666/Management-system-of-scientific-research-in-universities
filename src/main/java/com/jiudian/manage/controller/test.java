@@ -1,7 +1,9 @@
 package com.jiudian.manage.controller;
 
 import com.jiudian.manage.mapper.LendMapper;
+import com.jiudian.manage.mapper.NewsMapper;
 import com.jiudian.manage.model.Lend;
+import com.jiudian.manage.model.News;
 import com.jiudian.manage.until.State;
 import com.jiudian.manage.until.StateSignal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import java.util.Map;
 public class test {
     @Autowired
     LendMapper lendMapper;
+    @Autowired
+    NewsMapper newsMapper;
 
     @RequestMapping("/test")
     public Map Test(@RequestParam String name, @RequestParam String phone, @RequestParam String num, @RequestParam String equiment, HttpServletRequest request)
@@ -44,6 +48,17 @@ public class test {
         signal.put(State.SuccessCode);
         signal.put(State.SuccessMessage);
         signal.put("lend_list",lend_list);
+        return signal.getResult();
+    }
+    @RequestMapping("/getNewsList")
+    public Map getnewslist(HttpServletRequest request)
+    {
+        StateSignal signal = new StateSignal();
+
+        List<News> news_list=newsMapper.Get_news_list();
+        signal.put(State.SuccessCode);
+        signal.put(State.SuccessMessage);
+        signal.put("news_list",news_list);
         return signal.getResult();
     }
 }

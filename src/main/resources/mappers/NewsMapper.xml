@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiudian.manage.mapper.NewsMapper">
+
+    <resultMap id="NewsMap" type="com.jiudian.manage.model.News">
+        <result column="news_id" property="news_id"/>
+        <result column="news_title" property="news_title"/>
+        <result column="news_anthor" property="news_anthor"/>
+        <result column="news_class" property="news_class"/>
+        <result column="news_photo" property="news_photo"/>
+    </resultMap>
+
+    <select id="Get_news_list" resultMap="NewsMap">
+        select * from news
+    </select>
+</mapper>
