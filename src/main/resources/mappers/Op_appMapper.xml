@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiudian.manage.mapper.Op_appMapper">
+
+    <resultMap id="Op_appMap" type="com.jiudian.manage.model.Opening_app">
+        <result column="application_id" property="application_id"/>
+        <result column="p_name" property="p_name"/>
+        <result column="your_name" property="your_name"/>
+        <result column="your_id" property="your_id"/>
+        <result column="phone" property="phone"/>
+        <result column="p_type" property="p_type"/>
+        <result column="t_name" property="t_name"/>
+    </resultMap>
+
+    <insert id="Insert_Op_app" parameterType="com.jiudian.manage.model.Opening_app">
+        insert into op_application (p_name,your_name,your_id,phone,p_type,t_name,state) values (#{p_name},#{your_name},#{your_id},#{phone},#{p_type},#{t_name},#{state})
+    </insert>
+    <select id="get_Op_app" resultMap="Op_appMap">
+        select * from op_application
+    </select>
+    <update id="Edit_State" parameterType="java.lang.String">
+        update op_application set state=#{state} where application_id=#{p_id}
+    </update>
+</mapper>

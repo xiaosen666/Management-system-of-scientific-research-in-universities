@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开题申请</title>
+</head>
+<body>
+    <form>
+        <div>
+            <p>项目申请：</p>
+            <input type="text" placeholder="请输入您的项目名" id="p_name">
+        </div>
+        <div>
+            <p>申请人姓名：</p>
+            <input type="text" placeholder="请输入您的真实姓名" id="your_name">
+        </div>
+        <div>
+            <p>申请人学号：</p>
+            <input type="text" placeholder="请输入您的学号" id="your_id">
+        </div>
+        <div>
+            <p>申请人联系方式：</p>
+            <input type="text" placeholder="请输入您的电话号码或者微信号" id="phone">
+        </div>
+        <div>
+            <p>项目类型：</p>
+            <select id="p_type">
+                <option value="信息技术类">信息技术类</option>
+                <option value="艺术与传播类">艺术与传播类</option>
+                <option value="工程技术类">工程技术类</option>
+                <option value="数学金融类">数学金融类</option>
+            </select>
+        </div>
+        <div>
+            <p>项目指导老师：</p>
+            <input type="text" placeholder="请输入指导该项目的老师姓名" id="t_name">
+        </div>
+        <div>
+            <input type="button" value="提交申请" onclick="To_opening_application()">
+        </div>
+    </form>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/opening_application.js"></script>

@@ -2,9 +2,10 @@ package com.jiudian.manage.model;
 
 public class Lend {
     public String userid;
-    public String equiment;
+    public String name;
     public String num;
     public String phone;
+    public String message;
 
     public String getUser_id() {
         return userid;
@@ -14,12 +15,12 @@ public class Lend {
         this.userid = user_id;
     }
 
-    public String getEquiment() {
-        return equiment;
+    public String getName() {
+        return name;
     }
 
-    public void setEquiment(String equiment) {
-        this.equiment = equiment;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getNum() {
@@ -38,13 +39,22 @@ public class Lend {
         this.phone = phone;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public String toString() {
         return "Lend{" +
-                "user_id='" + userid + '\'' +
-                ", equiment='" + equiment + '\'' +
+                "userid='" + userid + '\'' +
+                ", name='" + name + '\'' +
                 ", num='" + num + '\'' +
                 ", phone='" + phone + '\'' +
+                ", message='" + message + '\'' +
                 '}';
     }
 }

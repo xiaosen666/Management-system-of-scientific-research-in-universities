@@ -10,19 +10,21 @@ $(document).ready(function(){
 
 //登录
 function To_test(){
-    var name=$("#your_name").val();
+
     var phone=$("#your_phone").val();
     var num=$("#num").val();
-    var equiment=$("#equiment").val();
+    var name=$("#name").val();
+    var message=$("#message").val();
     $.ajax({
         type:"POST",
         url:"../test",
         dataType:"JSON",
         data:{
-            "name":name,
+
             "phone":phone,
             "num":num,
-            "equiment":equiment,
+            "name":name,
+            "message":message,
         },
         success:function(data){
             console.log(data)
@@ -35,7 +37,7 @@ function To_test(){
             }
         },
         error:function(){
-            alert("登录 发生错误");
+            alert(" 发生错误");
         }
     });
 }

@@ -3,12 +3,12 @@
 <mapper namespace="com.jiudian.manage.mapper.LendMapper">
     <resultMap id="LendMap" type="com.jiudian.manage.model.Lend">
         <result column="userid" property="userid"/>
-        <result column="equiment" property="equiment"/>
+        <result column="name" property="name"/>
         <result column="num" property="num"/>
         <result column="phone" property="phone"/>
     </resultMap>
     <insert id="Insert_a_record" parameterType="com.jiudian.manage.model.Lend">
-        insert into lend (userid,equiment,num,phone) values (#{userid},#{equiment},#{num},#{phone})
+        insert into lend (userid,name,num,phone,message) values (#{userid},#{name},#{num},#{phone},#{message})
     </insert>
     <select id="Get_lend_list" parameterType="java.lang.String" resultMap="LendMap">
         select * from lend where userid=#{userid}
