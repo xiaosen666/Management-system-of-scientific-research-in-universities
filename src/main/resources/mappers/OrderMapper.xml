@@ -2,23 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jiudian.manage.mapper.OrderMapper" >
   <resultMap id="BaseResultMap" type="com.jiudian.manage.model.Order" >
-    <id column="orderid" property="orderid" jdbcType="INTEGER" />
-    <result column="householdname" property="householdname" jdbcType="VARCHAR" />
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="starttime" property="starttime" jdbcType="DATE" />
-    <result column="endtime" property="endtime" jdbcType="DATE" />
     <result column="money" property="money" jdbcType="DOUBLE" />
     <result column="state" property="state" jdbcType="INTEGER" />
-    <result column="roomid" property="roomid" jdbcType="INTEGER" />
+    <result column="t_name" property="t_name" jdbcType="VARCHAR" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
   </resultMap>
+
+  <resultMap id="Base_e_ResultMap" type="com.jiudian.manage.model.Order" >
+    <id column="e_pid" property="pid" jdbcType="INTEGER" />
+    <result column="e_name" property="name" jdbcType="VARCHAR" />
+    <result column="e_ID" property="id" jdbcType="VARCHAR" />
+    <result column="e_money" property="money" jdbcType="DOUBLE" />
+    <result column="e_state" property="state" jdbcType="INTEGER" />
+    <result column="e_t_name" property="t_name" jdbcType="VARCHAR" />
+    <result column="e_userid" property="userid" jdbcType="INTEGER" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
-    orderid, householdname, ID, starttime, endtime, money, state, roomid, userid
+    pid, name, ID, money, state, t_name, userid
   </sql>
   <select id="getAllUser" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
-    from orderlist
+    from project
+  </select>
+
+  <sql id="Base_e_Column_List" >
+    e_pid, e_name, e_ID, e_money, e_state, e_t_name, e_userid
+  </sql>
+  <select id="get_e_AllUser" resultMap="Base_e_ResultMap" >
+    select
+    <include refid="Base_e_Column_List" />
+    from e_project
   </select>
 
 
@@ -33,15 +51,24 @@
     where orderid = #{orderid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.jiudian.manage.model.Order" >
-    insert into orderlist (orderid, householdname, ID, 
-      starttime, endtime, money, 
-      state, roomid, userid
+    insert into project (pid, name, ID, money,
+      state, t_name, userid
       )
-    values (#{orderid,jdbcType=INTEGER}, #{householdname,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, 
-      #{starttime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{money,jdbcType=DOUBLE}, 
-      #{state,jdbcType=INTEGER}, #{roomid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}
+    values (#{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE},
+      #{state,jdbcType=INTEGER}, #{t_name,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}
       )
   </insert>
+
+  <insert id="insert_e_project" parameterType="com.jiudian.manage.model.Order" >
+    insert into e_project (e_pid, e_name, e_ID, e_money,
+                           e_state, e_t_name, e_userid
+    )
+    values (#{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE},
+            #{state,jdbcType=INTEGER}, #{t_name,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}
+           )
+  </insert>
+
+
   <insert id="insertSelective" parameterType="com.jiudian.manage.model.Order" >
     insert into orderlist
     <trim prefix="(" suffix=")" suffixOverrides="," >

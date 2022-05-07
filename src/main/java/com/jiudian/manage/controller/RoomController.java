@@ -1,5 +1,9 @@
 package com.jiudian.manage.controller;
 
+import com.jiudian.manage.mapper.End_appMapper;
+import com.jiudian.manage.mapper.Op_appMapper;
+import com.jiudian.manage.model.End_app;
+import com.jiudian.manage.model.Opening_app;
 import com.jiudian.manage.model.Room;
 import com.jiudian.manage.service.RoomService;
 import com.jiudian.manage.until.State;
@@ -17,6 +21,11 @@ import java.util.Map;
 public class RoomController {
     @Autowired
     RoomService roomService;
+    @Autowired
+    Op_appMapper op_appMapper;
+    @Autowired
+    End_appMapper end_appMapper;
+
     @RequestMapping("/addRoom.do")
     public Map addRoom(@RequestParam String local,@RequestParam double money,@RequestParam int state,@RequestParam int type){
         boolean b = roomService.addRoom(local, money, state, type);
@@ -72,14 +81,14 @@ public class RoomController {
         }
         return  signal.getResult();
     }
-    @RequestMapping("/getRoomById.do")
-    public Map getRoomById(@RequestParam int roomid){
-        Room b = roomService.getRoomById(roomid);
+    @RequestMapping("/getProjectById.do")
+    public Map getRoomById(@RequestParam String pid){
+        Opening_app opening_app = op_appMapper.Get_checked(pid);
         StateSignal signal = new StateSignal();
-        if(b!=null){
+        if(opening_app!=null){
             signal.put(State.SuccessCode);
             signal.put(State.SuccessMessage);
-            signal.put("room",b);
+            signal.put("project",opening_app);
         }else {
             signal.put(State.ErrorCode);
             signal.put(State.ErrorMessage);
@@ -87,6 +96,20 @@ public class RoomController {
         return  signal.getResult();
     }
 
+    @RequestMapping("/get_e_ProjectById.do")
+    public Map get_e_ById(@RequestParam String pid){
+        End_app end_app = end_appMapper.get_End_checked(pid);
+        StateSignal signal = new StateSignal();
+        if(end_app!=null){
+            signal.put(State.SuccessCode);
+            signal.put(State.SuccessMessage);
+            signal.put("project",end_app);
+        }else {
+            signal.put(State.ErrorCode);
+            signal.put(State.ErrorMessage);
+        }
+        return  signal.getResult();
+    }
 
 
 }

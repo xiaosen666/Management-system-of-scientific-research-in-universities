@@ -4,7 +4,7 @@ var l;
 
 $(document).ready(function(){
 	getorderList();
-	getConfig();
+	//getConfig();
 	$("#pre").on('click',function(){
 		getPre();
 	});
@@ -42,34 +42,31 @@ function getorderList(){
 				var htmlStr=" ";
 				var btnStr=" ";
 				var state=" ";
-				var sdate;
-				var edate;
 				l=0;
 				$("#pre").css("display","block");
 				$("#next").css("display","block");
 				$("#orderList").empty();
-				$("#orderList").append("<tr><th>入住人</th><th>身份证号</th><th>开始时间</th><th>结束时间</th><th>总金额</th><th>状态</th><th>操作</th></tr>")
+				$("#orderList").append("<tr><th>项目申请人</th><th>学号</th><th>申请经费金额</th><th>状态</th><th>操作</th></tr>")
 				
 				for(i in list){
-					sdate=/\d{4}-\d{1,2}-\d{1,2}/g.exec(list[i].starttime);
-					edate=/\d{4}-\d{1,2}-\d{1,2}/g.exec(list[i].endtime);
+
 					if(list[i].state=="0"){
-						state="未付款";
-						btnStr="<input  type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\">";
+						state="未支出经费";
+						btnStr="<input  type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\">";
 					}
 					else if(list[i].state=="1"){
-						state="已付款";
-						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> ";
+						state="已支出经费";
+						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\"> ";
 					}
 					else if(list[i].state=="2"){
-						state="已完成";
-						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input type=\"button\" class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"delOrder\" value=\"删除\">";
+						state="项目已完成";
+						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\"> <input type=\"button\" class=\"btn btn-success\"  data-orderid=\""+list[i].pid+"\" id=\"delOrder\" value=\"删除\">";
 					}
 					else{
-						state="已取消";
-						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input type=\"button\"  class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"delOrder\" value=\"删除\">";
+						state="项目已取消";
+						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\"> <input type=\"button\"  class=\"btn btn-success\"  data-orderid=\""+list[i].pid+"\" id=\"delOrder\" value=\"删除\">";
 					}
-					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+sdate+"</td><td>"+edate+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
+					htmlStr="<tr data-orderid=\""+list[i].pid+"\"><td>"+list[i].name+"</td><td>"+list[i].id+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
 					$("#orderList").append(htmlStr);
 					l++;
 				}
@@ -80,7 +77,7 @@ function getorderList(){
 
 		},
 		error:function(){
-			alert("获取订单列表发生错误")
+			alert("获取项目列表发生错误")
 		}
 	})
 }
@@ -90,8 +87,8 @@ function btnOn(){
 	$("input").filter("#setPageBtn").on('click',function( ){
 		setPage( );
 	});
-	$("input").filter("#showRoom").on('click',function(event){
-		showRoom(event);
+	$("input").filter("#showProject").on('click',function(event){
+		showProject(event);
 	})
 	$("input").filter("#delOrder").on('click',function(event){
 		delOrder(event);
@@ -146,39 +143,22 @@ function delOrder(event){
 }
 
 
-function showRoom(event){
-	var roomid=$(event.target).data("roomid");
+function showProject(event){
+	var pid=$(event.target).data("p_id");
 	$.ajax({
 		type:"POST",
-		url:"../room/getRoomById.do",
+		url:"../room/getProjectById.do",
 		dataType:"JSON",
 		data:{
-			"roomid":roomid
+			"pid":pid
 		},
 		success:function(data){
-			var room=data.room;
+			var project=data.project;
+			$("#roomTable").empty();
 			if(data.code==0){
 				var htmlStr=" ";
-				var state=" ";
-				var type=" ";
-				$("#roomTable").empty();
-				if(room.state=="0")
-					state="停用";
-				else if(room.state=="1")
-					state="未预定";
-				else if(room.state=="2")
-					state="已预定(入住)";
-				else
-					state="待清扫";
-				if(room.type=="1")
-					type="单人间";
-				else if(room.type=="2")
-					type="双人间";
-				else if(room.type=="3")
-					type="大床房";
-				else
-					type="套房";
-				htmlStr="<tr><th>位置</th><td>"+room.local+"</td></tr><tr><th>价格</th><td>"+room.money+"</td></tr><tr><th>类型</th><td>"+type+"</td></tr><tr><th>状态</th><td>"+state+"</td></tr>"
+
+				htmlStr="<tr><th>项目名称：</th><td>"+project.p_name+"</td></tr><tr><th>项目申请人</th><td>"+project.your_name+"</td></tr><tr><th>项目类型</th><td>"+project.p_type+"</td></tr><tr><th>联系方式</th><td>"+project.phone+"</td></tr>"
 				$("#roomTable").append(htmlStr);
 			}
 			else

@@ -13,4 +13,8 @@
     <select id="Get_news_list" resultMap="NewsMap">
         select * from news
     </select>
+
+    <insert id="put_news" parameterType="com.jiudian.manage.model.News">
+        insert into news (news_title,news_anthor,news_date,news_class,news_photo) values (#{news_title},#{news_anthor},#{news_date},#{news_class},#{news_photo})
+    </insert>
 </mapper>

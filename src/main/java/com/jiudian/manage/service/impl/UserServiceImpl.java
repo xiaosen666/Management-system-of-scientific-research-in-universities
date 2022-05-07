@@ -20,12 +20,16 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByPrimaryKey(userid);
     }
 
-    public boolean addUser(String account, String password, int power){
+    public boolean addUser(String account, String password, int power,String username,String age,String ID,String money,String phone){
         User user = new User();
         user.setUseraccount(account);
         user.setPassword(password);
         user.setPower(power);
         user.setIdnumber(UUIDUtil.generateShortUuid());
+        user.setAge(Integer.parseInt(age));
+        user.setMoney(Double.valueOf(money));
+        user.setPhonenumber(phone);
+        user.setUsername(username);
         int insert = userMapper.insertSelective(user);
         return insert>0?true:false;
     }

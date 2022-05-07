@@ -24,31 +24,25 @@ public class OrderServiceImpl implements OrderService {
     ConfigMapper configMapper;
 
     @Override
-    public boolean addOrder(String householdname, String id, String starttime, String endtime, int roomid, int userid) {
-        Room room = roomMapper.selectByPrimaryKey(roomid);
-        if(room.getState()!=1){
-            return false;
-        }
+    public boolean addOrder(String householdname, String id, String starttime, String endtime, String t_name, int userid) {
+        //Room room = roomMapper.selectByPrimaryKey(roomid);
+//        if(t_name.getState()!=1){
+//            return false;
+//        }
         Order order = new Order();
-        order.setHouseholdname(householdname);
+        order.setName(householdname);
         order.setId(id);
-        order.setStarttime(TimeUtil.formatterTime(starttime));
-        order.setEndtime(TimeUtil.formatterTime(endtime));
-        order.setRoomid(roomid);
+
+        order.setT_name(t_name);
         order.setUserid(userid);
         order.setState(0);
-        double money = TimeUtil.getBetweenDay(starttime,endtime)*room.getMoney();
-        order.setMoney(money);
-
-        Config config = configMapper.selectByPrimaryKey(1);
-        config.setTotalroom(config.getTotalroom()+1);
-        config.setTotalmoney(config.getTotalmoney()+money);
-        configMapper.updateByPrimaryKeySelective(config);
+        //double money = TimeUtil.getBetweenDay(starttime,endtime)*room.getMoney();
+        //order.setMoney(money);
 
         int insert = orderMapper.insertSelective(order);
         if(insert>0){
             Room room1 = new Room();
-            room1.setRoomid(roomid);
+            //room1.setRoomid(roomid);
             room1.setState(2);
             int i = roomMapper.updateByPrimaryKeySelective(room1);
             if(i>0){
@@ -64,9 +58,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean delOrder(int orderid) {
         Order order = orderMapper.selectByPrimaryKey(orderid);
-        Integer roomid = order.getRoomid();
+        String t_name = order.getT_name();
         Room room = new Room();
-        room.setRoomid(roomid);
+        //room.setRoomid(t_name);
         room.setState(1);
         int i = roomMapper.updateByPrimaryKeySelective(room);
         if(i>0){
@@ -84,9 +78,9 @@ public class OrderServiceImpl implements OrderService {
         if(order==null){
             return false;
         }
-        Integer roomid = order.getRoomid();
+        String t_name = order.getT_name();
         Room room = new Room();
-        room.setRoomid(roomid);
+        //room.setRoomid(roomid);
         int i = 1;
         if(state==2){
             room.setState(3);
@@ -110,5 +104,11 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAllOrder(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         return orderMapper.getAllUser();
+    }
+
+    @Override
+    public List<Order> get_e_AllOrder(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return orderMapper.get_e_AllUser();
     }
 }

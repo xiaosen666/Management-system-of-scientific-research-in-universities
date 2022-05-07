@@ -1,6 +1,8 @@
 package com.jiudian.manage.controller;
 
+import com.jiudian.manage.mapper.End_appMapper;
 import com.jiudian.manage.model.Config;
+import com.jiudian.manage.model.End_app;
 import com.jiudian.manage.service.ConfigService;
 import com.jiudian.manage.until.State;
 import com.jiudian.manage.until.StateSignal;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -16,19 +20,22 @@ import java.util.Map;
 public class ConfigController {
     @Autowired
     ConfigService configService;
+    @Autowired
+    End_appMapper end_appMapper;
 
     /**
      *
      * @return
      */
     @RequestMapping(value = "/getConfig.do")
-    public Map getConfig(){
-        Config config = configService.get();
+    public Map getConfig(HttpServletRequest request){
+        List<End_app> end_app_list = end_appMapper.get_End_app();
         StateSignal signal = new StateSignal();
-        if(config!=null){
+        if(end_app_list!=null){
             signal.put(State.SuccessCode);
             signal.put(State.SuccessMessage);
-            signal.put("config",config);
+            signal.put("config",end_app_list);
+            signal.put("ad_name",request.getSession().getAttribute("this_userid"));
         }else {
             signal.put(State.ErrorCode);
             signal.put(State.ErrorMessage);

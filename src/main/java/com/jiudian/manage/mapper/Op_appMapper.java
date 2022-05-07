@@ -11,5 +11,7 @@ public interface Op_appMapper {
 
     List<Opening_app> get_Op_app();
 
+    Opening_app Get_checked(String p_id);
+
     void Edit_State(String state,String p_id);
 }

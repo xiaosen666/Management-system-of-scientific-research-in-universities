@@ -42,6 +42,7 @@ public class UserController {
                 signal.put(State.SuccessMessage);
                 signal.put("userid",login[0]);
                 session.setAttribute("this_userid",String.valueOf(login[0]));
+                session.setAttribute("this_userpower",String.valueOf(login[1]));
                 signal.put("power",login[1]);
             }else {
                 signal.put(State.ErrorCode);
@@ -67,8 +68,8 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/addUser.do")
-    public Map addUser(@RequestParam String useraccount, @RequestParam String password, @RequestParam String power){
-        boolean add = userService.addUser(useraccount,password,Integer.parseInt(power));
+    public Map addUser(@RequestParam String useraccount, @RequestParam String password, @RequestParam String power,String username,String age,String ID,String money,String phone){
+        boolean add = userService.addUser(useraccount,password,Integer.parseInt(power),username,age,ID,money,phone);
         StateSignal signal = new StateSignal();
         if(add){
             signal.put(State.SuccessCode);

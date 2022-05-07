@@ -21,4 +21,7 @@
     <update id="Edit_State" parameterType="java.lang.String">
         update op_application set state=#{state} where application_id=#{p_id}
     </update>
+    <select id="Get_checked" resultType="com.jiudian.manage.model.Opening_app">
+        select * from op_application where application_id=#{p_id}
+    </select>
 </mapper>

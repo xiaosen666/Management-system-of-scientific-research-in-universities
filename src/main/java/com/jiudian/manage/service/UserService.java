@@ -14,7 +14,7 @@ public interface UserService {
      * @param power 权限
      * @return  是否添加成功
      */
-    public boolean addUser(String account,String password,int power);
+    public boolean addUser(String account,String password,int power,String username,String age,String ID,String money,String phone);
 
     /**
      * 删除用户

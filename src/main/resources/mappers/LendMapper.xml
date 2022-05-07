@@ -13,4 +13,8 @@
     <select id="Get_lend_list" parameterType="java.lang.String" resultMap="LendMap">
         select * from lend where userid=#{userid}
     </select>
+
+    <select id="Get_all_lend_list" resultMap="LendMap">
+        select * from lend
+    </select>
 </mapper>

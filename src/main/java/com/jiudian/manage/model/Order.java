@@ -3,38 +3,34 @@ package com.jiudian.manage.model;
 import java.util.Date;
 
 public class Order {
-    private Integer orderid;
+    private Integer pid;
 
-    private String householdname;
+    private String name;
 
     private String id;
-
-    private Date starttime;
-
-    private Date endtime;
 
     private Double money;
 
     private Integer state;
 
-    private Integer roomid;
+    private String t_name;
 
     private Integer userid;
 
-    public Integer getOrderid() {
-        return orderid;
+    public Integer getPid() {
+        return pid;
     }
 
-    public void setOrderid(Integer orderid) {
-        this.orderid = orderid;
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
-    public String getHouseholdname() {
-        return householdname;
+    public String getName() {
+        return name;
     }
 
-    public void setHouseholdname(String householdname) {
-        this.householdname = householdname == null ? null : householdname.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getId() {
@@ -43,22 +39,6 @@ public class Order {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
-    }
-
-    public Date getStarttime() {
-        return starttime;
-    }
-
-    public void setStarttime(Date starttime) {
-        this.starttime = starttime;
-    }
-
-    public Date getEndtime() {
-        return endtime;
-    }
-
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
     }
 
     public Double getMoney() {
@@ -77,12 +57,12 @@ public class Order {
         this.state = state;
     }
 
-    public Integer getRoomid() {
-        return roomid;
+    public String getT_name() {
+        return t_name;
     }
 
-    public void setRoomid(Integer roomid) {
-        this.roomid = roomid;
+    public void setT_name(String t_name) {
+        this.t_name = t_name;
     }
 
     public Integer getUserid() {

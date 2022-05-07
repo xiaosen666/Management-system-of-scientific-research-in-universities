@@ -29,17 +29,12 @@ function getConfig(){
 		data:{},
 		success:function(data){
 			if(data.code=="0"){
-				config=data.config;
-				var htmlStr="<tr><td>经理</td><td>"+config.manage+"</td><td>"+config.managesalary+"%</td></tr>"+
-				"<tr><td>员工</td><td>"+config.staff+"</td><td>"+config.staffsalary+"%</td></tr>"+
-				"<tr><td>清洁工</td><td>"+config.cleaner+"</td><td>"+config.cleanerssalary+"%</td></tr>";
-				$("#configList").append(htmlStr);
-				$("#inputMS").val(config.manage);
-				$("#inputSS").val(config.staff);
-				$("#inputCS").val(config.cleaner);
-				$("#inputM").val(config.managesalary);
-				$("#inputS").val(config.staffsalary);
-				$("#inputC").val(config.cleanerssalary);
+				configlist=data.config;
+				for(i in configlist){
+					var htmlStr="<tr><td>"+configlist[i].p_name+"</td><td>"+configlist[i].money+"</td><td>"+data.ad_name+"</td></tr>";
+					$("#configList").append(htmlStr);
+				}
+
 			}
 			else{
 				alert("获取配置错误");

@@ -11,6 +11,6 @@ public class Myconfig implements WebMvcConfigurer {
     private interceptor interceptor;
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(interceptor).addPathPatterns("/index","/pages/*","");
+        registry.addInterceptor(interceptor).addPathPatterns("/index.html","/pages/*","");
     }
 }

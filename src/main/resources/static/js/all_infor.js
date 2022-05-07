@@ -22,7 +22,7 @@ $(document).ready(function(){
 		changeTab();
 	});
 	getInfo();
-	getSalary();
+	//getSalary();
 	$("#alterInfoBtn").click(function(){
 		alterInfo();
 	});

@@ -11,6 +11,8 @@ public interface OrderMapper {
 
     int insert(Order record);
 
+    int insert_e_project(Order e_record);
+
     int insertSelective(Order record);
 
     Order selectByPrimaryKey(Integer orderid);
@@ -20,4 +22,6 @@ public interface OrderMapper {
     int updateByPrimaryKey(Order record);
 
     List<Order> getAllUser();
+
+    List<Order> get_e_AllUser();
 }

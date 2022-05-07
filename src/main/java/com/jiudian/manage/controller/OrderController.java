@@ -25,13 +25,13 @@ public class OrderController {
      * @param id            入住人身份证号
      * @param starttime     开始时间
      * @param endtime       结束时间
-     * @param roomid        房间id
+     * @param t_name        老师姓名
      * @param userid        用户id
      * @return
      */
     @RequestMapping("/addOrder.do")
-    public Map addOrder(@RequestParam String householdname,@RequestParam String id,@RequestParam String starttime,@RequestParam String endtime,@RequestParam int roomid,@RequestParam int userid){
-        boolean b = orderService.addOrder(householdname, id, starttime, endtime, roomid, userid);
+    public Map addOrder(@RequestParam String householdname,@RequestParam String id,@RequestParam String starttime,@RequestParam String endtime,@RequestParam String t_name,@RequestParam int userid){
+        boolean b = orderService.addOrder(householdname, id, starttime, endtime, t_name, userid);
         StateSignal signal = new StateSignal();
         if(b){
             signal.put(State.SuccessCode);
@@ -99,4 +99,20 @@ public class OrderController {
         return  signal.getResult();
     }
 
+    @RequestMapping("/getAll_e_Order.do")
+    public Map getAll_e_Order(@RequestParam int pageNum,@RequestParam int pageSize){
+        List<Order> allOrder = orderService.get_e_AllOrder(pageNum, pageSize);
+        StateSignal signal = new StateSignal();
+        if(allOrder!=null){
+            signal.put(State.SuccessCode);
+            signal.put(State.SuccessMessage);
+            signal.put("List",allOrder);
+            signal.put("pageNum",pageNum);
+            signal.put("pageSize",pageSize);
+        }else {
+            signal.put(State.ErrorCode);
+            signal.put(State.ErrorMessage);
+        }
+        return  signal.getResult();
+    }
 }

@@ -11,11 +11,11 @@ public interface OrderService {
      * @param id
      * @param starttime
      * @param endtime
-     * @param roomid
+     * @param t_name
      * @param userid
      * @return
      */
-    public boolean addOrder(String householdname, String id, String starttime, String endtime, int roomid, int userid);
+    public boolean addOrder(String householdname, String id, String starttime, String endtime, String t_name, int userid);
 
     /**
      * 删除订单
@@ -33,9 +33,14 @@ public interface OrderService {
     public boolean updateOrderState(int orderid,int state);
 
     /**
-     *获取所有订单
+     *获取所有开题项目
      * @return
      */
     public List<Order> getAllOrder(int pageNum, int pageSize);
 
+    /**
+     *获取所有结题项目
+     * @return
+     */
+    public List<Order> get_e_AllOrder(int pageNum, int pageSize);
 }

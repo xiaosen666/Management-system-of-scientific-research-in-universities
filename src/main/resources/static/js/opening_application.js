@@ -29,7 +29,8 @@ function To_opening_application(){
         success:function(data){
             console.log(data)
             if(data.code=="0"){
-                var urlString="check_op_application.html";
+                alert("申请成功！等待老师审核完毕...即将返回主页")
+                var urlString="../index.html";
                 window.location.href=urlString;
             }
             else if(data.code=="-1"){

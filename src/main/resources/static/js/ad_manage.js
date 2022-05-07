@@ -55,15 +55,15 @@ function getStaffList(){
 							btnStr=" ";
 						}
 						else if(list[i].power=="1") {
-							power="经理";
-							btnStr="<input type=\"button\" id=\"setStaff\" data-userid=\""+list[i].userid+"\" class=\"btn btn-success\" value=\"设置为员工\"/> <input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
+							power="老师";
+							btnStr="<input type=\"button\" id=\"setStaff\" data-userid=\""+list[i].userid+"\" class=\"btn btn-success\" value=\"设置为学生\"/> <input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
 						}
 						else if(list[i].power=="2") {
-							power="员工";
-							btnStr="<input type=\"button\" id=\"setManage\" data-userid=\""+list[i].userid+"\" class=\"btn btn-success\" value=\"设置为经理\"/> <input type=\"button\" id=\"setPwd\" data-userid=\""+list[i].userid+"\" class=\"btn btn-info\" value=\"重置密码\"/> <input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
+							power="学生";
+							btnStr="<input type=\"button\" id=\"setManage\" data-userid=\""+list[i].userid+"\" class=\"btn btn-success\" value=\"设置为老师\"/> <input type=\"button\" id=\"setPwd\" data-userid=\""+list[i].userid+"\" class=\"btn btn-info\" value=\"重置密码\"/> <input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
 						}
 						else {
-							power="清洁工";
+							power="游客";
 							btnStr="<input type=\"button\" id=\"setPwd\" data-userid=\""+list[i].userid+"\" class=\"btn btn-info\" value=\"重置密码\"/> <input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/> "
 						}
 						
@@ -79,14 +79,14 @@ function getStaffList(){
 				}
 			}
 			else{
-				alert("获取员工列表失败")
+				alert("获取人员列表失败")
 			}
 			
 
 			
 		},
 		error:function(){
-			alert("获取员工列表发生错误")
+			alert("获取人员列表发生错误")
 		}
 	})
 }

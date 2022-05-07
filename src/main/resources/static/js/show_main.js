@@ -1,6 +1,6 @@
 $(document).ready(function(){
     getNewsList();
-
+    getUserLogin();
 })
 var list;
 function getNewsList(){
@@ -19,14 +19,42 @@ function getNewsList(){
                 }
             }
             else{
-                alert("获取租借列表失败")
+                alert("获取文章列表失败")
             }
 
 
 
         },
         error:function(){
-            alert("获取租借列表发生错误")
+            alert("获取文章列表发生错误")
+        }
+    })
+}
+
+function getUserLogin(){
+    $.ajax({
+        type:"post",
+        url:"./getUserLogin",
+        dataType:"JSON",
+        data:{
+        },
+        success:function(data){
+            if(data.code=="0"){
+
+                $("#loginok").css('display','block');
+                var urlString="pages/myCenter.html?power="+data.power+"&userid="+data.userid;
+                $("#mycenter").attr('href',urlString);
+            }
+            else{
+
+                $("#nologin").css('display','block');
+            }
+
+
+
+        },
+        error:function(){
+            alert("获取用户登陆状态失败！")
         }
     })
 }

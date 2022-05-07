@@ -1,5 +1,7 @@
 package com.jiudian.manage.controller;
 
+import com.jiudian.manage.mapper.End_appMapper;
+import com.jiudian.manage.model.End_app;
 import com.jiudian.manage.service.UserService;
 import com.jiudian.manage.until.FileUtil;
 import com.jiudian.manage.until.State;
@@ -22,6 +24,8 @@ import java.util.UUID;
 public class FileController {
     @Autowired
     UserService userService;
+    @Autowired
+    End_appMapper end_appMapper;
 
     @RequestMapping("/upFilePhoto.do")
     public Map upFilePhoto(@RequestParam MultipartFile file,@RequestParam int userid){
@@ -47,5 +51,38 @@ public class FileController {
         return signal.getResult();
     }
 
+    @RequestMapping("/upFile.do")
+    public Map upMyFile(@RequestParam MultipartFile file,String p_name,String your_name,String your_id,String phone,String p_type,String t_name,String money){
+        String fileName = UUID.randomUUID().toString()+file.getOriginalFilename();
+        String filePath = "..\\mytest_file\\";
+        End_app end_app = new End_app();
+        end_app.setFile_name(fileName);
+        end_app.setYour_name(your_name);
+        end_app.setYour_id(your_id);
+        end_app.setP_name(p_name);
+        end_app.setPhone(phone);
+        end_app.setP_type(p_type);
+        end_app.setT_name(t_name);
+        end_app.setMoney(money);
+        end_app.setState("-1");
+
+        end_appMapper.Insert_End_app(end_app);
+
+        boolean b = false;
+        try {
+            b = FileUtil.uploadFile(file.getBytes(), filePath, fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        StateSignal signal = new StateSignal();
+        if(b){
+            signal.put(State.SuccessCode);
+            signal.put(State.SuccessMessage);
+        }else {
+            signal.put(State.ErrorCode);
+            signal.put(State.ErrorMessage);
+        }
+        return signal.getResult();
+    }
 
 }
