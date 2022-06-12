@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiudian.manage.mapper.End_appMapper">
+
+    <resultMap id="End_appMap" type="com.jiudian.manage.model.End_app">
+        <result column="application_id" property="application_id"/>
+        <result column="p_name" property="p_name"/>
+        <result column="your_name" property="your_name"/>
+        <result column="your_id" property="your_id"/>
+        <result column="phone" property="phone"/>
+        <result column="p_type" property="p_type"/>
+        <result column="t_name" property="t_name"/>
+        <result column="state" property="state"/>
+        <result column="money" property="money"/>
+        <result column="file_name" property="file_name"/>
+    </resultMap>
+
+    <resultMap id="EP_Map" type="com.jiudian.manage.model.Project">
+        <result column="e_pid" property="pid"/>
+        <result column="e_name" property="name"/>
+        <result column="e_ID" property="ID"/>
+        <result column="e_money" property="money"/>
+        <result column="e_state" property="state"/>
+        <result column="e_t_name" property="t_name"/>
+        <result column="e_userid" property="userid"/>
+    </resultMap>
+
+    <insert id="Insert_End_app" parameterType="com.jiudian.manage.model.End_app">
+        insert into end_application (p_name,your_name,your_id,phone,p_type,t_name,state,money,file_name,uid) values (#{p_name},#{your_name},#{your_id},#{phone},#{p_type},#{t_name},#{state},#{money},#{file_name},#{uid})
+    </insert>
+    <select id="get_End_app" resultMap="End_appMap">
+        select * from end_application
+    </select>
+    <update id="Edit_end_State" parameterType="java.lang.String">
+        update end_application set state=#{state} where application_id=#{p_id}
+    </update>
+
+    <select id="get_End_checked" resultType="com.jiudian.manage.model.End_app">
+        select * from end_application where application_id=#{pid}
+    </select>
+    <select id="get_all_checked_End_app" resultMap="EP_Map">
+        select * from e_project
+    </select>
+
+</mapper>

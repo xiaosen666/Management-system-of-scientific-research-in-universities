@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/myCenter.css">
+  <link rel="stylesheet" type="text/css" href="../css/pages.css">
+
+</head>
+
+<body>
+
+<div class="col-md-12 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 2rem;display: flex;flex-direction: column">
+
+  <div class="col-md-12  " >
+  <div class="table-responsive" style="width: auto">
+    <table class="table table-bordered table-hoverb text-nowrap" style="margin-top: 10px;" id="end_p_List">
+    <tr class="table-primary"><th>项目名称</th><th>项目负责人</th><th>学号</th><th>项目指导老师</th><th>审核人</th><th>成果资料</th></tr>
+    </table>
+    <div class="col-md-12">
+      <form class="form-inline">
+        <div class="form-group" style="margin-right: 10xp">
+          <a href="#" id="pre">上一页 </a>
+        </div>
+        <!--<div class="form-group">
+          <input type="text" style="width: 5rem" class="form-control" id="inputPage">
+          <input type="button" id="setPageBtn" class="btn btn-default" value="跳转">
+        </div>-->
+        <div class="form-group" style="margin-left: 10px">
+          <a href="#" id="next">下一页</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-9 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 2rem;display: flex;">
+
+    <div class="col-md-5 col-xs-5 nopadding" style="float: right;margin-left: 20px;">
+      <ul class="list-group">
+        <li class="list-group-item"  style="color:black !important;border: 0.5px solid #C8C8BF">
+
+          总成果数:
+          <span class="badge" id="result"> </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
+
+<div class="modal fade" id="showProjectT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">项目详情</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover" style="margin-top:10px" id="roomTable">
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/achievement_manage.js"></script>
+

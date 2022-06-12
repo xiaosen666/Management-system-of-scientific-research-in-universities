@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结题申请</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+<body>
+<div class="modal-body">
+    <script type="text/javascript">
+        function saveReport(){
+            $("#uploadfile").ajaxSubmit(function(data){
+                console.log(data);
+                if(data.code==0)
+                    alert("申请提交成功!等待老师审核...即将返回首页");
+                else
+                    alert("申请提交失败!");
+                window.location.href="../index.html";
+            });
+            return false;
+        }
+    </script>
+    <form action="../upFile/upFile.do"  method="post"  enctype="multipart/form-data"  onsubmit="return saveReport()" id="uploadfile">
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >您的项目名</span>
+            </div>
+            <input id="p_name" name="p_name" type="text" class="form-control" placeholder=""  aria-describedby="basic-addon1" >
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >您的真实姓名</span>
+            </div>
+            <input id="your_name" name="your_name" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" >
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >您的学号</span>
+            </div>
+            <input id="your_id" name="your_id" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" >
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >您的电话号码或者微信号</span>
+            </div>
+            <input id="phone" name="phone" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" >
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text">归属学院</label>
+            </div>
+            <select class="custom-select" id="p_type" name="p_type">
+                <option value="信息技术学院">信息技术学院</option>
+                <option value="金融数学学院">金融数学学院</option>
+                <option value="工程技术学院">工程技术学院</option>
+                <option value="艺术与传播学院">艺术与传播学院</option>
+                <option value="未来教育学院">未来教育学院</option>
+                <option value="乐育书院">乐育书院</option>
+                <option value="会同书院">会同书院</option>
+                <option value="文学院">文学院</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >项目指导老师</span>
+            </div>
+            <input id="t_name" name="t_name" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" >
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >申请经费金额</span>
+            </div>
+            <input id="money" name="money" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" >
+        </div>
+        <div class="input-group mb-3">
+            <input type="file" class="custom-file-input" id="inputFile" name="file" required>
+            <label class="custom-file-label" for="inputFile" data-browse="上传材料">（文件大小1M以内）</label>
+        </div>
+
+        <input type="submit" id="alterProfile" class="btn btn-lg btn-info" value="提交申请"/>
+    </form>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery-form.js"></script>
+<script type="text/javascript" src="../js/end_application.js"></script>

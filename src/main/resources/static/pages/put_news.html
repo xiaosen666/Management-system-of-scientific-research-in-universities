@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>推送科研新闻</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+<body>
+<script type="text/javascript">
+    function saveReport(){
+        $("#uploadfile").ajaxSubmit(function(data){
+            console.log(data);
+            if(data.code==0)
+                alert("推送新闻成功！即将返回首页");
+            else
+                alert("提交失败!");
+            window.location.href="../index.html";
+        });
+        return false;
+    }
+</script>
+        <form action="../putNews" method="post" enctype="multipart/form-data" class="input-group input-group-lg" style="display: flex;flex-direction: column;margin-top: 100px" onsubmit="saveReport()" id="uploadfile">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >新闻标题</span>
+            </div>
+            <input name="title" id="n_title" type="text" class="form-control" placeholder=""  aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >新闻作者</span>
+            </div>
+            <input name="anthor" id="n_author" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+        </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">新闻日期</span>
+                </div>
+                <input name="date" id="n_date" type="date" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="n_class">新闻归属学院</label>
+            </div>
+            <select class="custom-select" id="n_class" name="myclass">
+                <option value="信息技术学院">信息技术学院</option>
+                <option value="金融数学学院">金融数学学院</option>
+                <option value="工程技术学院">工程技术学院</option>
+                <option value="艺术与传播学院">艺术与传播学院</option>
+                <option value="未来教育学院">未来教育学院</option>
+                <option value="乐育书院">乐育书院</option>
+                <option value="会同书院">会同书院</option>
+                <option value="文学院">文学院</option>
+            </select>
+        </div>
+
+            <div class="input-group mb-3">
+                <input type="file" class="custom-file-input" id="n_photo" name="photo">
+                <label class="custom-file-label" for="n_photo" data-browse="点击上传图片">新闻封面图片</label>
+            </div>
+
+<!--            <button onclick="put_News()" type="button" class="btn btn-lg btn-info">推送</button>-->
+            <input type="submit" value="推送" class="btn btn-lg btn-info">
+    </form>
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/put_news.js"></script>

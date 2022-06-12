@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+    <form>
+        <div>
+            <p>账号：</p>
+            <input type="text" placeholder="qq号或者电话号码" id="useraccount" name="useraccount">
+        </div>
+        <div>
+            <p>新密码：</p>
+            <input type="password" id="pwd" name="pwd">
+        </div>
+        <div>
+            <p>确认密码：</p>
+            <input type="password" id="ensure_pwd" name="ensure_pwd">
+        </div>
+        <div>
+            <p>真实姓名：</p>
+            <input type="text" placeholder="身份证上真实姓名" id="username" name="username">
+        </div>
+        <div>
+            <p>年龄：</p>
+            <input type="text" placeholder="身份证上真实年龄" id="age" name="age">
+        </div>
+        <div>
+            <p>身份：</p>
+            <select id="power" name="power">
+                <option value="1">老师</option>
+                <option value="2">学生</option>
+            </select>
+        </div>
+        <div style="display: none;">
+            <p>学号/工号：</p>
+            <input type="text" id="IDnumber" name="IDnumber">
+        </div>
+        <div>
+            <p>账户余额：</p>
+            <input type="text" id="money" name="money">
+        </div>
+        <div>
+            <p>联系方式：</p>
+            <input type="text" id="phonenumber" name="phonenumber">
+        </div>
+        <button id="ResignBtn">确认注册</button>
+    </form>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/resign.js"></script>

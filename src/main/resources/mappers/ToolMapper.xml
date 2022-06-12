@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiudian.manage.mapper.ToolMapper">
+    <resultMap id="ToolMap" type="com.jiudian.manage.model.Tool">
+        <result column="tool_id" property="id"/>
+        <result column="tool" property="tool"/>
+        <result column="amount" property="amount"/>
+    </resultMap>
+    <insert id="InsertTool" parameterType="com.jiudian.manage.model.Tool">
+        insert into survey_tool (tool,amount) values (#{tool},#{amount})
+    </insert>
+<!--    <select id="Get_lend_list" parameterType="java.lang.String" resultMap="LendMap">-->
+<!--        select * from lend where userid=#{userid}-->
+<!--    </select>-->
+
+    <select id="get_all_tool" resultMap="ToolMap">
+        select * from survey_tool
+    </select>
+
+    <select id="get_toolAmount_by_id" resultType="java.lang.String">
+        select amount from survey_tool where tool_id=#{id}
+    </select>
+
+    <update id="update_tool" parameterType="com.jiudian.manage.model.Tool">
+        update survey_tool set tool=#{tool},amount=#{amount} where tool_id=#{id}
+    </update>
+
+    <update id="back_tool">
+        update survey_tool set amount=amount+#{amount} where tool=#{tool}
+    </update>
+
+    <delete id="delete_tool">
+        delete from survey_tool where tool_id=#{id}
+    </delete>
+</mapper>

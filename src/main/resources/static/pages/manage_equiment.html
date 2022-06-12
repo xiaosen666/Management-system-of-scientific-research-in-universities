@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    <style>
+
+        *{padding:0px;margin:0px;}
+
+        ul li {
+            cursor:pointer;
+
+            float:left;
+
+            width:auto;
+
+            height:30px;
+
+            line-height:30px;
+
+            text-align:center;
+
+            background-color:#fff;
+
+            border:1px #bbb solid;
+
+            border-bottom:none;
+
+        }
+
+        ul li.fli {
+            background-color:#ccc;
+
+            color:red;
+
+        }
+
+        ul {
+            overflow:hidden;
+
+            list-style:none;
+
+        }
+
+        #tab_con {
+            width:1080px;
+
+            height:980px;
+
+        }
+
+        #tab_con div{
+            width:1080px;
+
+            height:980px;
+
+            display:none;
+
+            border:1px #bbb solid;
+
+            border-top:none;
+
+            text-align:center;
+
+        }
+
+        #tab_con div.fdiv {
+            display:block;
+
+            background-color:#ccc;
+
+        }
+
+        div:not(#tab_con){
+            padding:20px 0px;
+
+            color:blue;
+
+        }
+        /* Border styles */
+        .table-1 thead, .table-1 tr {
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: #a8bfde;
+        }
+        .table-1 {
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: #a8bfde;
+        }
+
+        /* Padding and font style */
+        .table-1 td, .table-1 th {
+            padding: 5px 10px;
+            font-size: 30px;
+            font-family: Verdana;
+            color: #5b7da3;
+        }
+
+        /* Alternating background colors */
+        .table-1 tr:nth-child(even) {
+            background: #d3dfed
+        }
+        .table-1 tr:nth-child(odd) {
+            background: #FFF
+        }
+
+    </style>
+</head>
+<body>
+
+
+<ul id="tab">
+
+    <li class="fli" onclick="change(this)">查看所有设备信息</li>
+
+    <li onclick="change(this)">增加设备信息</li>
+
+    <li onclick="change(this)">移除和修改设备信息</li>
+
+</ul>
+
+<div id="tab_con">
+
+    <div class="fdiv" >
+        <form>
+            <input type="text" placeholder="需要查找的设备名称">
+            <input type="submit" value="查找">
+        </form>
+        <table class="table-1" id="tablewatch"><tr><th>仪器id</th><th>仪器名</th><th>库存数量</th></tr></table>
+    </div>
+
+    <div>
+        <form>
+            <input id="iequiment" type="text" placeholder="新添加的设备名称">
+            <input id="iamount" type="number" placeholder="新添加的设备库存">
+            <input type="button" value="添加" onclick="InsertToolList()">
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <input type="text" placeholder="查找需要移除||修改的设备名称">
+            <input type="submit" value="查找">
+        </form>
+        <table class="table-1" id="tableset"><tr><th>仪器id</th><th>仪器名</th><th>库存数量</th><th>操作</th></tr></table>
+        <div id="update_tool" style="display: none">
+            <form>
+                <span>设备的id:&nbsp&nbsp<span id="toolid"></span></span>
+                <input id="equiment" type="text" placeholder="修改设备名称">
+                <input id="amount" type="number" placeholder="修改设备库存">
+                <input type="button" value="修改" onclick="updateToolList()">
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/manage_equiment.js"></script>
+</html>
