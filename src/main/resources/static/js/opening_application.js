@@ -9,22 +9,24 @@ $(document).ready(function(){
 function To_opening_application(){
 
     var p_name=$("#p_name").val();
-    var your_name=$("#your_name").val();
+    //var your_name=$("#your_name").val();
     var your_id=$("#your_id").val();
     var phone=$("#phone").val();
     var p_type=$("#p_type").val();
     var t_name=$("#t_name").val();
+    var money=$("#money").val();
     $.ajax({
         type:"POST",
         url:"../opening_application",
         dataType:"JSON",
         data:{
             "p_name":p_name,
-            "your_name":your_name,
+            //"your_name":your_name,
             "your_id":your_id,
             "phone":phone,
             "p_type":p_type,
             "t_name":t_name,
+            "money":money,
         },
         success:function(data){
             console.log(data)

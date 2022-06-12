@@ -1,5 +1,9 @@
 package com.jiudian.manage.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
+
 public class Opening_app {
     String application_id;
     String p_name;
@@ -9,6 +13,34 @@ public class Opening_app {
     String p_type;
     String t_name;
     String state;
+    String money;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    Date date;
+    String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
 
     public String getApplication_id() {
         return application_id;

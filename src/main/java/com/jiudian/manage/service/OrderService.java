@@ -2,6 +2,7 @@ package com.jiudian.manage.service;
 
 import com.jiudian.manage.model.Order;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface OrderService {
@@ -36,11 +37,11 @@ public interface OrderService {
      *获取所有开题项目
      * @return
      */
-    public List<Order> getAllOrder(int pageNum, int pageSize);
+    public List<Order> getAllOrder(int pageNum, int pageSize, HttpServletRequest request);
 
     /**
      *获取所有结题项目
      * @return
      */
-    public List<Order> get_e_AllOrder(int pageNum, int pageSize);
+    public List<Order> get_e_AllOrder(int pageNum, int pageSize,HttpServletRequest request);
 }

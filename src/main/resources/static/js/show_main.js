@@ -1,7 +1,31 @@
 $(document).ready(function(){
     getNewsList();
     getUserLogin();
+
 })
+
+function showNews () {
+    var docWidth = $('body').width(),
+        $wrap = $('#wrap'),
+        $images = $('#wrap .hb'),
+        slidesWidth = $wrap.width();
+
+    $(window).on('resize', function () {
+        docWidth = $('body').width();
+        slidesWidth = $wrap.width();
+    })
+
+    $(document).mousemove(function (e) {
+        var mouseX = e.pageX,
+            offset = mouseX / docWidth * slidesWidth - mouseX / 2;
+
+        $images.css({
+            '-webkit-transform': 'translate3d(' + -offset + 'px,0,0)',
+            'transform': 'translate3d(' + -offset + 'px,0,0)'
+        });
+    });
+}
+
 var list;
 function getNewsList(){
     $.ajax({
@@ -15,13 +39,26 @@ function getNewsList(){
                 list=data.news_list;
                 for(i in list)
                 {
-                    $("#box1").append("<p>标题： "+list[i].news_title+"</p><p>作者： "+list[i].news_anthor+"</p><p>日期： "+list[i].news_date+"</p><p>类型： "+list[i].news_class+"</p>图片：<img style='width: 50px;height: 50px;' src='"+list[i].news_photo+"'/><hr><hr>");
+                    $("#wrap").append("   <a href=\"#\" class=\"hb\">\n" +
+                        "            <div class=\"c\">\n" +
+                        "                <img src='"+list[i].news_photo+"' alt=\"\" />\n" +
+                        "                <div id=\"txt\">\n" +
+                        "                    <h1>"+list[i].news_title+"</h1>\n" +
+                        "                    <p>"+list[i].news_date+"</p>\n" +
+                        "                    <p>"+list[i].news_anthor+"</p>\n" +
+                        "                     <p>"+list[i].news_class+"</p>\n"+
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "        </a>\n" +
+                        "        <div class=\"fullBg\">\n" +
+                        "            <img src='"+list[i].news_photo+"' alt=\"\" />\n" +
+                        "        </div>");
                 }
+                showNews();
             }
             else{
                 alert("获取文章列表失败")
             }
-
 
 
         },

@@ -5,10 +5,8 @@
 }
 
 .userpic{
-	width: 50%;
-	border-radius: 50%;
 	border: 1px solid black;
-	margin-left:25%;
+	height: 500px;
 }
 
 .username{
@@ -26,7 +24,7 @@
     width: 100%;
     margin: 0 auto;
     line-height: 3.2;
-    border-bottom: 2px solid #e6e6e6;
+
     overflow: hidden;
     float: left;
 }

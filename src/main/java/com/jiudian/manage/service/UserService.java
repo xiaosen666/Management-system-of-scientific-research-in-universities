@@ -63,7 +63,7 @@ public interface UserService {
      * @param password 密码
      * @return 用户id和用户权限等级
      */
-    public int[] login(String username,String password);
+    public Object[] login(String username,String password);
 
 
     /**

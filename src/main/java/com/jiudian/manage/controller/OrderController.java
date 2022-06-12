@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -83,8 +84,8 @@ public class OrderController {
     }
 
     @RequestMapping("/getAllOrder.do")
-    public Map getAllOrder(@RequestParam int pageNum,@RequestParam int pageSize){
-        List<Order> allOrder = orderService.getAllOrder(pageNum, pageSize);
+    public Map getAllOrder(@RequestParam int pageNum, @RequestParam int pageSize, HttpServletRequest request){
+        List<Order> allOrder = orderService.getAllOrder(pageNum, pageSize,request);
         StateSignal signal = new StateSignal();
         if(allOrder!=null){
             signal.put(State.SuccessCode);
@@ -100,8 +101,8 @@ public class OrderController {
     }
 
     @RequestMapping("/getAll_e_Order.do")
-    public Map getAll_e_Order(@RequestParam int pageNum,@RequestParam int pageSize){
-        List<Order> allOrder = orderService.get_e_AllOrder(pageNum, pageSize);
+    public Map getAll_e_Order(@RequestParam int pageNum,@RequestParam int pageSize,HttpServletRequest request){
+        List<Order> allOrder = orderService.get_e_AllOrder(pageNum, pageSize,request);
         StateSignal signal = new StateSignal();
         if(allOrder!=null){
             signal.put(State.SuccessCode);

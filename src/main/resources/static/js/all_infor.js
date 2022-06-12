@@ -13,7 +13,7 @@ var power=$.getData('power');
 
 $(document).ready(function(){
 	var w=$("#userpic").width();
-  	$("#userpic").height(w);
+  	$("#userpic").height();
 	$("#inputNone").attr("value",userid);
 	$("#showInfo").click(function(){
 		changeTab();

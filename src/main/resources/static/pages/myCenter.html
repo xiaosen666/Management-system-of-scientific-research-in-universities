@@ -11,44 +11,98 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid nav-con">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="../index.html" style="padding-top: 2rem;color: white">
-          <span style="font-size: 2.3rem;padding-right: 2rem;letter-spacing: 2px">六飞高校科研管理系统</span>
+<nav class="navbar navbar-default" style="margin-bottom: 20px;height: 50px;">
+    <div class="navbar-header" style="margin: 0 auto;margin-left: 0px;">
+      <a class="navbar-brand" href="../index.html" style="color: white">
+          <span style="font-size: 2.3rem;letter-spacing: 2px">六飞高校科研管理系统&nbsp&nbsp&nbsp<h3 id="thePort" style="display: inline;text-shadow: 5px 5px 5px gray"></h3></span>
       </a>
+<!--        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" >-->
+<!--            <span class="sr-only">Toggle navigation</span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--        </button>-->
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="navli"><a href="#">欢迎！</a></li>
-          <li class="navli"><a onclick="Out_login()" href="../login.html">退出</a></li>
-        </ul>
+    <div class="dropdown">
+        <button class="btn btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+            当前用户
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <span id="uname">您好！</span>
+            <a onclick="Out_login()" class="dropdown-item"  href="../login.html">退出</a>
+        </div>
     </div>
-  </div>
+
 </nav>
 
-<div class="col-md-12 main nopadding">
-  <div class="col-md-2 navlist nopadding">
-    <div class="list-group" id="tagList">
-
-    </div>
+<div class="col-md-12 main nopadding" style="display: flex">
 
 
-  </div>
 
-  <div class="col-md-10 nopadding">
+
+<!--        <div class="col-5 col-md-3 collapse width bg-dark" id="collapseExample">-->
+            <div class="col-md-2 navlist nopadding">
+                <div class="list-group" id="tagList">
+                </div>
+            </div>
+
+
+
+  <div class="col-md-10 ">
     <iframe frameborder="0" id="mainFrame" class="mainFrame" name="mainFrame" src=""></iframe>
   </div>
 
+
+
 </div>
+
 </body>
 </html>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/myCenter.js"></script>
+
+<style>
+    body{
+        height : 100vh;
+        overflow : scroll;
+    }
+#collapseExample{
+    width: 100%;
+}
+    .col-md-2 navlist nopadding{
+        width: 100%;
+    }
+
+    .list-group{
+        width: 100%;
+        height: 100vh;
+    }
+    .list-group a{
+        width:100%;
+    }
+    .list-group-item{
+        width: 100%;
+    }
+/*.col-md-12 main nopadding{*/
+/*    overflow: hidden;*/
+/*}*/
+    .collapse.width.show {
+        transition: width .3s ease, min-width .3s ease;
+        width: 100%;
+        max-width: 100%;
+        min-width: initial;
+    }
+    .collapse.width,
+    .collapsing.width {
+        max-width: 0;
+        min-width: 0;
+        width: 0;
+        transition: all .2s ease;
+    }
+    .collapse .flex-column {
+        max-height: 100vh;
+        overflow: auto;
+        flex-wrap: wrap; /* Optional, if you don't want the links to form columns if they overflow */
+    }
+</style>

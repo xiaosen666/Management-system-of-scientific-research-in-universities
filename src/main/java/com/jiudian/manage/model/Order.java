@@ -17,6 +17,16 @@ public class Order {
 
     private Integer userid;
 
+    public String getApplyUid() {
+        return applyUid;
+    }
+
+    public void setApplyUid(String applyUid) {
+        this.applyUid = applyUid;
+    }
+
+    private String applyUid;
+
     public Integer getPid() {
         return pid;
     }

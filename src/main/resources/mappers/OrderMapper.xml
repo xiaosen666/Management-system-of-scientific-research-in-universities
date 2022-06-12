@@ -27,7 +27,7 @@
   <select id="getAllUser" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
-    from project
+    from project where applyUid=#{uid}
   </select>
 
   <sql id="Base_e_Column_List" >
@@ -36,7 +36,7 @@
   <select id="get_e_AllUser" resultMap="Base_e_ResultMap" >
     select
     <include refid="Base_e_Column_List" />
-    from e_project
+    from e_project where applyUid=#{uid}
   </select>
 
 
@@ -52,19 +52,19 @@
   </delete>
   <insert id="insert" parameterType="com.jiudian.manage.model.Order" >
     insert into project (pid, name, ID, money,
-      state, t_name, userid
+      state, t_name, userid,applyUid
       )
     values (#{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE},
-      #{state,jdbcType=INTEGER}, #{t_name,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}
+      #{state,jdbcType=INTEGER}, #{t_name,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER},#{applyUid,jdbcType=VARCHAR}
       )
   </insert>
 
   <insert id="insert_e_project" parameterType="com.jiudian.manage.model.Order" >
     insert into e_project (e_pid, e_name, e_ID, e_money,
-                           e_state, e_t_name, e_userid
+                           e_state, e_t_name, e_userid,applyUid
     )
     values (#{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE},
-            #{state,jdbcType=INTEGER}, #{t_name,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}
+            #{state,jdbcType=INTEGER}, #{t_name,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER},#{applyUid,jdbcType=VARCHAR}
            )
   </insert>
 

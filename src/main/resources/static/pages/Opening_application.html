@@ -3,41 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>开题申请</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 </head>
 <body>
     <form>
-        <div>
-            <p>项目申请：</p>
-            <input type="text" placeholder="请输入您的项目名" id="p_name">
+<!--        <div>-->
+<!--            <p>项目申请：</p>-->
+<!--            <input type="text" placeholder="请输入您的项目名" id="p_name">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p>申请人姓名：</p>-->
+<!--            <input type="text" placeholder="请输入您的真实姓名" id="your_name">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p>申请人学号：</p>-->
+<!--            <input type="text" placeholder="请输入您的学号" id="your_id">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p>申请人联系方式：</p>-->
+<!--            <input type="text" placeholder="请输入您的电话号码或者微信号" id="phone">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p>项目类型：</p>-->
+<!--            <select id="p_type">-->
+<!--                <option value="信息技术类">信息技术类</option>-->
+<!--                <option value="艺术与传播类">艺术与传播类</option>-->
+<!--                <option value="工程技术类">工程技术类</option>-->
+<!--                <option value="数学金融类">数学金融类</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <p>项目指导老师：</p>-->
+<!--            <input type="text" placeholder="请输入指导该项目的老师姓名" id="t_name">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <input type="button" value="提交申请" onclick="To_opening_application()">-->
+<!--        </div>-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">您的项目名</span>
+            </div>
+            <input type="text" class="form-control" id="p_name"  aria-describedby="basic-addon1">
         </div>
-        <div>
-            <p>申请人姓名：</p>
-            <input type="text" placeholder="请输入您的真实姓名" id="your_name">
+<!--        <div class="input-group mb-3">-->
+<!--            <div class="input-group-prepend">-->
+<!--                <span class="input-group-text">您的真实姓名</span>-->
+<!--            </div>-->
+<!--            <input type="text" class="form-control" id="your_name" aria-describedby="basic-addon1">-->
+<!--        </div>-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" >您的学号</span>
+            </div>
+            <input type="text" class="form-control" id="your_id" aria-describedby="basic-addon1">
         </div>
-        <div>
-            <p>申请人学号：</p>
-            <input type="text" placeholder="请输入您的学号" id="your_id">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">您的电话号码或者微信号</span>
+            </div>
+            <input type="text" class="form-control" id="phone" aria-describedby="basic-addon1">
         </div>
-        <div>
-            <p>申请人联系方式：</p>
-            <input type="text" placeholder="请输入您的电话号码或者微信号" id="phone">
-        </div>
-        <div>
-            <p>项目类型：</p>
-            <select id="p_type">
-                <option value="信息技术类">信息技术类</option>
-                <option value="艺术与传播类">艺术与传播类</option>
-                <option value="工程技术类">工程技术类</option>
-                <option value="数学金融类">数学金融类</option>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="p_type">新闻归属学院</label>
+            </div>
+            <select class="custom-select" id="p_type">
+                <option value="信息技术学院">信息技术学院</option>
+                <option value="金融数学学院">金融数学学院</option>
+                <option value="工程技术学院">工程技术学院</option>
+                <option value="艺术与传播学院">艺术与传播学院</option>
+                <option value="未来教育学院">未来教育学院</option>
+                <option value="乐育书院">乐育书院</option>
+                <option value="会同书院">会同书院</option>
+                <option value="文学院">文学院</option>
             </select>
         </div>
-        <div>
-            <p>项目指导老师：</p>
-            <input type="text" placeholder="请输入指导该项目的老师姓名" id="t_name">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">预计申请经费</span>
+            </div>
+            <input type="number" class="form-control" id="money" aria-describedby="basic-addon1">
         </div>
-        <div>
-            <input type="button" value="提交申请" onclick="To_opening_application()">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">项目指导老师</span>
+            </div>
+            <input type="text" class="form-control" id="t_name" aria-describedby="basic-addon1">
         </div>
+<!--        <div class="input-group mb-3">-->
+<!--            <input type="file" class="custom-file-input" id="inputFile">-->
+<!--            <label class="custom-file-label" for="inputFile" data-browse="上传材料">（文件大小1M以内）</label>-->
+<!--        </div>-->
+        <input type="button" id="alterProfile" class="btn btn-lg btn-info" value="提交申请" onclick="To_opening_application()"/>
     </form>
 </body>
 </html>

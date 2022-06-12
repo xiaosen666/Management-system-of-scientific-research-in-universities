@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Map;
@@ -30,9 +31,10 @@ public class FileController {
     @RequestMapping("/upFilePhoto.do")
     public Map upFilePhoto(@RequestParam MultipartFile file,@RequestParam int userid){
         String fileName = UUID.randomUUID().toString()+file.getOriginalFilename();
-
-        String filePath = ".\\src\\main\\resources\\static\\File\\";
-        String RealfilePath = "File\\"+fileName;
+        String filePath = "webFile/";
+        //String filePath = ".\\src\\main\\resources\\static\\File\\";
+        //String RealfilePath = "File\\"+fileName;
+        String RealfilePath = "webFile/"+fileName;
         boolean photo = userService.photo(userid, RealfilePath);
         boolean b = false;
         try {
@@ -52,9 +54,9 @@ public class FileController {
     }
 
     @RequestMapping("/upFile.do")
-    public Map upMyFile(@RequestParam MultipartFile file,String p_name,String your_name,String your_id,String phone,String p_type,String t_name,String money){
+    public Map upMyFile(@RequestParam MultipartFile file, String p_name, String your_name, String your_id, String phone, String p_type, String t_name, String money, HttpServletRequest request){
         String fileName = UUID.randomUUID().toString()+file.getOriginalFilename();
-        String filePath = "..\\mytest_file\\";
+        String filePath = "./mytest_file";
         End_app end_app = new End_app();
         end_app.setFile_name(fileName);
         end_app.setYour_name(your_name);
@@ -65,6 +67,7 @@ public class FileController {
         end_app.setT_name(t_name);
         end_app.setMoney(money);
         end_app.setState("-1");
+        end_app.setUid(request.getSession().getAttribute("this_userid").toString());
 
         end_appMapper.Insert_End_app(end_app);
 

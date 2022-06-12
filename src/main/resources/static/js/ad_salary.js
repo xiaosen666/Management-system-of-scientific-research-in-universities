@@ -29,10 +29,15 @@ function getConfig(){
 		data:{},
 		success:function(data){
 			if(data.code=="0"){
-				configlist=data.config;
-				for(i in configlist){
-					var htmlStr="<tr><td>"+configlist[i].p_name+"</td><td>"+configlist[i].money+"</td><td>"+data.ad_name+"</td></tr>";
+				var ppp=data.p_List;
+				var oppp=data.op_List;
+				for(i in ppp){
+					if(ppp[i].state==0)
+						var htmlStr="<tr><td>"+oppp[i].p_name+"</td><td>"+ppp[i].name+"</td><td>"+oppp[i].phone+"</td><td>"+ppp[i].money+"</td><td>暂无人审批</td><td>经费未审批</td></tr>";
+					else if(ppp[i].state==1)
+						var htmlStr="<tr><td>"+oppp[i].p_name+"</td><td>"+ppp[i].name+"</td><td>"+oppp[i].phone+"</td><td>"+ppp[i].money+"</td><td>"+ppp[i].gm_admin+"</td><td>经费已在"+ppp[i].date+"审批</td></tr>";
 					$("#configList").append(htmlStr);
+					console.log(ppp[i])
 				}
 
 			}
@@ -48,6 +53,18 @@ function getConfig(){
 	});
 }
 
+function getDate(){
+	var date = new Date();
+	var year = date.getFullYear();    //  返回的是年份
+	var month = date.getMonth() + 1;  //  返回的月份上个月的月份，记得+1才是当月
+	var dates = date.getDate();       //  返回的是几号
+	// var day = date.getDay();          //  周一返回的是1，周六是6，但是周日是0
+	// var arr = [ "星期日","星期一","星期二","星期三","星期四","星期五","星期六",];
+	return {
+		year ,month ,dates
+	}
+}
+
 function changeTab(){
 	var info=$("#showConfigDiv").css("display");
 	var alter=$("#alterConfigDiv").css("display");
@@ -61,38 +78,3 @@ function changeTab(){
 	}
 }
 
-function alterConfig(){
-	if(isEmptyString($("#inputMS").val())||isEmptyString($("#inputM").val())||isEmptyString($("#inputSS").val())||isEmptyString($("#inputS").val())||isEmptyString($("#inputCS").val())||isEmptyString($("#inputC").val()))
-		alert("请填写全内容");
-	else{
-		$.ajax({
-			type:"POST",
-			url:"../config/updateConfig.do",
-			dataType:"JSON",
-			data:{
-				"managesalary":$("#inputM").val(),
-				"staffsalary":$("#inputS").val(),
-				"cleanerssalary":$("#inputC").val(),
-				"manage":$("#inputMS").val(),
-				"staff":$("#inputSS").val(),
-				"cleaner":$("#inputCS").val()
-			},
-			success:function(data){
-				if(data.code=="0"){
-					alert("修改成功");
-					
-				}
-				else{
-					alert("修改配置错误");
-				}
-				window.location.reload();
-
-			},
-			error:function(){
-				alert("修改配置发生错误")
-			}
-
-		});
-
-	}
-}

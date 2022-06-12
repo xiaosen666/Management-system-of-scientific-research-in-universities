@@ -1,6 +1,7 @@
 var pageNum=1;
 var pageSize=8;
 var l;
+var moneynum=0;
 
 $(document).ready(function(){
 	getorderList();
@@ -46,30 +47,35 @@ function getorderList(){
 				$("#pre").css("display","block");
 				$("#next").css("display","block");
 				$("#orderList").empty();
-				$("#orderList").append("<tr><th>项目申请人</th><th>学号</th><th>申请经费金额</th><th>状态</th><th>操作</th></tr>")
+				$("#orderList").append("<tr class=\"table-primary\"><th>项目申请人</th><th>学号</th><th>申请经费金额</th><th>状态</th><th>操作</th></tr>")
 				
 				for(i in list){
 
 					if(list[i].state=="0"){
-						state="未支出经费";
+						state="管理员未支出经费";
 						btnStr="<input  type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\">";
 					}
 					else if(list[i].state=="1"){
-						state="已支出经费";
-						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\"> ";
+						state="管理员已支出经费";
+						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\"> <input type=\"button\"  class=\"btn btn-info\" onclick=\"window.location.href='end_application.html?opid="+list[i].pid+"'\" data-toggle=\"modal\" value=\"申请结题\">";
 					}
 					else if(list[i].state=="2"){
 						state="项目已完成";
 						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\"> <input type=\"button\" class=\"btn btn-success\"  data-orderid=\""+list[i].pid+"\" id=\"delOrder\" value=\"删除\">";
 					}
 					else{
-						state="项目已取消";
+						state="项目还未审核";
 						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-p_id=\""+list[i].pid+"\" id=\"showProject\"  data-toggle=\"modal\" data-target='#showProjectT' value=\"查看项目详情\"> <input type=\"button\"  class=\"btn btn-success\"  data-orderid=\""+list[i].pid+"\" id=\"delOrder\" value=\"删除\">";
 					}
 					htmlStr="<tr data-orderid=\""+list[i].pid+"\"><td>"+list[i].name+"</td><td>"+list[i].id+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
 					$("#orderList").append(htmlStr);
 					l++;
+					moneynum+=list[i].money;
 				}
+				$("#totalMoney").empty();
+				$("#totalRoom").empty();
+				$("#totalMoney").append(moneynum);
+				$("#totalRoom").append(list.length);
 				if(pageNum=="1") $("#pre").css("display","none");
 				if(pageSize>l) $("#next").css("display","none");
 				btnOn();
@@ -93,7 +99,39 @@ function btnOn(){
 	$("input").filter("#delOrder").on('click',function(event){
 		delOrder(event);
 	});
+	$("input").filter("#giveMoney").on('click',function(event){
+		giveMoney(event);
+	});
 }
+
+function giveMoney(event){
+	var pid=$(event.target).data("orderid");
+	var state=$(event.target).data("state");
+	$.ajax({
+		type:"POST",
+		url:"../update_money_state",
+		dataType:"JSON",
+		data:{
+			"pid":pid,
+			"state":state,
+		},
+		success:function(data){
+			if(data.code==0){
+				alert("经费已下达");
+				if(l==1)
+					pageNum=pageNum-1;
+				getorderList();
+			}
+			else
+				alert("经费支出失败")
+		},
+		error:function(){
+			alert("经费支出出现错误");
+		}
+	})
+
+}
+
 
 function getPre(){
 	pageNum=pageNum-1;

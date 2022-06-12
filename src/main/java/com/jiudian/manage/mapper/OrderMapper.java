@@ -21,7 +21,7 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    List<Order> getAllUser();
+    List<Order> getAllUser(String uid);
 
-    List<Order> get_e_AllUser();
+    List<Order> get_e_AllUser(String uid);
 }

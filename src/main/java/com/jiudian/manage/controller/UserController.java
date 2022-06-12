@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @RestController
@@ -34,9 +35,9 @@ public class UserController {
         StateSignal signal = new StateSignal();
         String code = (String) session.getAttribute(ImageCode.CODENAME);
 
-        System.out.println("session: "+code+"   实际"+icode);
-        if(icode!=null&&code!=null&&icode.equals(code)){
-            int[] login = userService.login(useraccount, password);
+
+        if(icode!=null&&code!=null&&(icode.equals(code.toLowerCase())||icode.equals(code.toUpperCase()))){
+            Object[] login = userService.login(useraccount, password);
             if(login!=null){
                 signal.put(State.SuccessCode);
                 signal.put(State.SuccessMessage);
@@ -44,6 +45,7 @@ public class UserController {
                 session.setAttribute("this_userid",String.valueOf(login[0]));
                 session.setAttribute("this_userpower",String.valueOf(login[1]));
                 signal.put("power",login[1]);
+                session.setAttribute("uname",login[2]);
             }else {
                 signal.put(State.ErrorCode);
                 signal.put(State.ErrorMessage);

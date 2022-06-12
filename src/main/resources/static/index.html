@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>主页展示</title>
+    <link rel="stylesheet" type="text/css" href="css/indexstyle.css">
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+
 </head>
 <body>
-    <div id="nologin" style="display: none"><a href="login.html">登录</a><a href="resign.html">注册</a></div>
-    <div id="loginok" style="display: none"><a id="mycenter">个人中心</a></div>
-    <div id="box1" style="background: red;border:solid 5px black">
+
+<!--    <div id="box1" style="background: red;border:solid 5px black">-->
+
+<!--    </div>-->
+    <div id="wrap">
+        <div id="nologin" style="display: none;z-index:999;position: fixed;float: left"><a href="login.html">登录</a><a href="resign.html">注册</a></div>
+        <div id="loginok" style="display: none;z-index:999;position: fixed;float: left"><a id="mycenter">个人中心</a></div>
+
 
     </div>
+
+
 </body>
 </html>
 <script type="text/javascript" src="./js/jquery.min.js"></script>

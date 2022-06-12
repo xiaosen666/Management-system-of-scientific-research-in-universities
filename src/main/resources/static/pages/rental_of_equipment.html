@@ -739,64 +739,6 @@
 
 
 
-                        <!-- Tag -->
-                        <!-- <div class="flex-s-s p-t-10 p-b-25">
-                          <span class="f1-s-12 cl5 m-r-8">Tags:</span>
-                          <div class="flex-wr-s-s size-w-0">
-                              <a href="#" class="f1-s-12 cl8 hov-link1 m-r-15">#Business</a>
-                              <a href="#" class="f1-s-12 cl8 hov-link1 m-r-15">#Corporate</a>
-                              <a href="#" class="f1-s-12 cl8 hov-link1 m-r-15">#Services</a>
-                              <a href="#" class="f1-s-12 cl8 hov-link1 m-r-15">#Customer</a>
-                          </div>
-                        </div> -->
-
-                        <!-- Share -->
-                        <!-- <div class="flex-s-s">
-                          <span class="f1-s-12 cl5 p-t-1 m-r-15">Share:</span>
-                          <div class="flex-wr-s-s size-w-0"> <a href="#" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03"> <i class="fab fa-facebook-f m-r-7"></i> Facebook </a> <a href="#" class="dis-block f1-s-13 cl0 bg-twitter borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03"> <i class="fab fa-twitter m-r-7"></i> Twitter </a> <a href="#" class="dis-block f1-s-13 cl0 bg-google borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03"> <i class="fab fa-google-plus-g m-r-7"></i> Google+ </a> <a href="#" class="dis-block f1-s-13 cl0 bg-pinterest borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03"> <i class="fab fa-pinterest-p m-r-7"></i> Pinterest </a> </div>
-                        </div>
-                      </div> -->
-
-                        <!-- Comment Aera -->
-                        <!-- <div id="comments" class="comments-area block">
-                          <h4 class="f1-l-4 cl3 p-b-12 p-b-25">03 Comments</h4>
-                          <ul class="comments-list">
-                            <li>
-                              <div class="comment"> <img class="comment-avatar pull-left" alt="" src="../img/user1.png">
-                                <div class="comment-body">
-                                  <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span> <span class="comment-date pull-right">15 Jan, 2020</span> </div>
-                                  <div class="comment-content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries, but also the leap into electronic type setting, remaining essentially unchanged.</p>
-                                  </div>
-                                  <div class="text-left"> <a class="comment-reply" href="#"><i class="fa fa-share"></i> Reply</a> </div>
-                                </div>
-                              </div>
-                              <ul class="comments-reply">
-                                <li>
-                                  <div class="comment"> <img class="comment-avatar pull-left" alt="" src="../img/user2.png">
-                                    <div class="comment-body">
-                                      <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span> <span class="comment-date pull-right">15 Jan, 2020</span> </div>
-                                      <div class="comment-content">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries, but also the leap into electronic type setting, remaining essentially unchanged.</p>
-                                      </div>
-                                      <div class="text-left"> <a class="comment-reply" href="#"><i class="fa fa-share"></i> Reply</a> </div>
-                                    </div>
-                                  </div>
-                                </li>
-                              </ul>
-                              <div class="comment last"> <img class="comment-avatar pull-left" alt="" src="../img/user1.png">
-                                <div class="comment-body">
-                                  <div class="meta-data"> <span class="comment-author">Miss Lisa Doe</span> <span class="comment-date pull-right">15 Jan, 2020</span> </div>
-                                  <div class="comment-content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since It has survived not only five centuries, but also the leap into electronic type setting, remaining essentially unchanged.</p>
-                                  </div>
-                                  <div class="text-left"> <a class="comment-reply" href="#"><i class="fa fa-share"></i> Reply</a> </div>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div> -->
-
                         <!-- Leave a comment -->
                         <div class="comment_block">
                             <h4 class="f1-l-4 cl3 p-b-12 p-b-25">设备租用申请</h4>
@@ -811,7 +753,7 @@
 <!--                                    </div>-->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input class="form-control" id="name" placeholder="租界人姓名" type="text" required="">
+                                            <input class="form-control" id="name" placeholder="租借人姓名" type="text" required="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -821,7 +763,22 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+
                                             <input class="form-control" placeholder="租借数量" type="text"  id="num" name="num" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="预计归还日期" type="text" disabled>
+                                            <input class="form-control" type="date"  id="backDate" name="backDate" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="选择租用仪器设备" type="text" disabled>
+                                            <span class="form-control"  id="amount" name="amount"></span>
+                                            <select id="equiment" name="equiment" style="width: 300px;font-size: 30px" onchange="whatToolSelected()">
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -836,153 +793,14 @@
                     </div>
                 </div>
 
-                <!-- Sidebar -->
-<!--                <div>-->
-<!--                    <form>-->
-<!--                        租借的设备：-->
-<!--                        <select id="equiment">-->
-<!--                            <option value="computer">电脑</option>-->
-<!--                            <option value="classroom">教室</option>-->
-<!--                            <option value="microscope">显微镜</option>-->
-<!--                        </select>-->
-<!--                        租借人：-->
-<!--                        <input type="text" id="your_name" name="your_name"/>-->
-<!--                        租借人联系方式：-->
-<!--                        <input type="text" id="your_phone" name="your_name"/>-->
-<!--                        租借数量：-->
-<!--                        <input type="text" id="num" name="num"/>-->
-<!--                        <button type="button" id="to_test" onclick="To_test()">提交</button>-->
-<!--                    </form>-->
-<!--                </div>-->
-                <!-- Popular Posts -->
-                <div class="p-b-20">
-                    <div class="how2 how2-cl2 flex-s-c">
-                        <h3 class="f1-m-2 cl3 tab01-title">Popular Post</h3>
-                    </div>
-                    <ul class="p-t-35">
-                        <li class="flex-wr-sb-s bad-bor1 m-b-15 p-b-15"> <a href="#" class="size-w-10 wrap-pic-w hov1 trans-03"> <img src="../img/popular-post-01.jpg" alt="IMG"> </a>
-                            <div class="size-w-11">
-                                <span class="cl8 txt-center"><a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">Music</a> <span class="f1-s-3 m-rl-3"> - </span> <span class="f1-s-3">22 Jan, 2020</span></span>
-                                <h6 class="p-t-5"><a href="blog-detail-2.html" class="f1-s-5 cl3 hov-cl10 trans-03">Zhang social media pop also known when smart innocent...</a></h6>
-                            </div>
-                        </li>
-                        <li class="flex-wr-sb-s bad-bor1 m-b-15 p-b-15"> <a href="#" class="size-w-10 wrap-pic-w hov1 trans-03"> <img src="../img/popular-post-02.jpg" alt="IMG"> </a>
-                            <div class="size-w-11">
-                                <span class="cl8 txt-center"><a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">Music</a> <span class="f1-s-3 m-rl-3"> - </span> <span class="f1-s-3">22 Jan, 2020</span></span>
-                                <h6 class="p-t-5"><a href="blog-detail-2.html" class="f1-s-5 cl3 hov-cl10 trans-03">Zhang social media pop also known when smart innocent...</a></h6>
-                            </div>
-                        </li>
-                        <li class="flex-wr-sb-s p-b-30"> <a href="#" class="size-w-10 wrap-pic-w hov1 trans-03"> <img src="../img/popular-post-03.jpg" alt="IMG"> </a>
-                            <div class="size-w-11">
-                                <span class="cl8 txt-center"><a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">Music</a> <span class="f1-s-3 m-rl-3"> - </span> <span class="f1-s-3">22 Jan, 2020</span></span>
-                                <h6 class="p-t-5"><a href="blog-detail-2.html" class="f1-s-5 cl3 hov-cl10 trans-03">Zhang social media pop also known when smart innocent...</a></h6>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
 
-                <!-- Popular Tag -->
-                <div>
-                    <div class="how2 how2-cl2 flex-s-c m-b-30">
-                        <h3 class="f1-m-2 cl3 tab01-title">Popular Tags</h3>
-                    </div>
-                    <div class="flex-wr-s-s m-rl--5">
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Business</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Corporate</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Services</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Customer</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Money</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Health</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Lifestyles</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Traveling</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Partners</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Wordpress</a>
-                        <a href="#" class="flex-c-c size-h-1 bo-1-rad-4 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-15 p-tb-5 m-all-5">Customer</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer>
-    <div class="bg2 p-t-40 p-b-25">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 p-b-20">
-                    <div class="size-h-3 flex-s-c"><a href="index.html"><img class="max-s-full" src="../img/icons/logo-02.png" alt="Logo"></a></div>
-                    <div>
-                        <p class="f1-s-1 cl11 p-b-16">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since when an unknown printer galley of type and scrambled type specimen book...</p>
-                        <p class="f1-s-1 cl11 p-b-16">Call Us On (+12) 14 547 9874</p>
-                        <div class="p-t-5 ftr-social-icon">
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8"><span class="fab fa-facebook-f"></span></a>
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8"><span class="fab fa-google-plus"></span></a>
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8"><span class="fab fa-twitter"></span></a>
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8"><span class="fab fa-linkedin"></span></a>
-                            <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8"><span class="fab fa-youtube"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 p-b-20">
-                    <div class="size-h-3 flex-s-c">
-                        <h5 class="f1-m-7 cl0">Popular Posts</h5>
-                    </div>
-                    <ul>
-                        <li class="flex-wr-sb-s p-b-20"><a href="#" class="size-w-4 wrap-pic-w hov1 trans-03"><img src="../img/popular-post-01.jpg" alt="IMG"></a>
-                            <div class="size-w-5">
-                                <span class="cl6"><a href="#" class="f1-s-4 cl6 hov-cl10 trans-03">By, John Doe</a> <span class="f1-s-3 m-rl-3"> - </span> <span class="f1-s-3">16 Jan, 2020</span></span>
-                                <h6 class="p-t-5"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">Zhang social media pop also known when smart innocent...</a></h6>
-                            </div>
-                        </li>
-                        <li class="flex-wr-sb-s p-b-20"><a href="#" class="size-w-4 wrap-pic-w hov1 trans-03"><img src="../img/popular-post-02.jpg" alt="IMG"></a>
-                            <div class="size-w-5">
-                                <span class="cl6"><a href="#" class="f1-s-4 cl6 hov-cl10 trans-03">By, John Doe</a> <span class="f1-s-3 m-rl-3"> - </span> <span class="f1-s-3">16 Jan, 2020</span></span>
-                                <h6 class="p-t-5"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">Zhang social media pop also known when smart innocent...</a></h6>
-                            </div>
-                        </li>
-                        <li class="flex-wr-sb-s p-b-20"><a href="#" class="size-w-4 wrap-pic-w hov1 trans-03"><img src="../img/popular-post-03.jpg" alt="IMG"></a>
-                            <div class="size-w-5">
-                                <span class="cl6"><a href="#" class="f1-s-4 cl6 hov-cl10 trans-03">By, John Doe</a> <span class="f1-s-3 m-rl-3"> - </span> <span class="f1-s-3">16 Jan, 2020</span></span>
-                                <h6 class="p-t-5"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">Zhang social media pop also known when smart innocent...</a></h6>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-3 p-b-20">
-                    <div class="size-h-3 flex-s-c">
-                        <h5 class="f1-m-7 cl0">Living Opinion</h5>
-                    </div>
-                    <ul class="m-t--12">
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Today’s Opinion</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Op-Ed Contributing</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Contributing Writers</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Business News</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Saturday Review</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Product Review</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-2 p-b-20">
-                    <div class="size-h-3 flex-s-c">
-                        <h5 class="f1-m-7 cl0">Categories</h5>
-                    </div>
-                    <ul class="m-t--12">
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Fashion (14)</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Technology (18)</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Street Style (28)</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Life Style (35)</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Education (32)</a></li>
-                        <li class="how-bor1 p-rl-5 p-tb-10"><a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">Corrections (22)</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bg11">
-        <div class="container size-h-4 flex-c-c p-tb-15"><span class="f1-s-1 cl0 txt-center">Copyright © 2020 All Rights <a href="http://www.bootstrapmb.com/">bootstrapmb</a>.</span></div>
-    </div>
-</footer>
+
 
 <!-- Back to Top -->
 <div class="utf-back-to-top" id="myBtn"><span class="symbol-utf-back-to-top"><span class="fas fa-angle-up"></span></span></div>

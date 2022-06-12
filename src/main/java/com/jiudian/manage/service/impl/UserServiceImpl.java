@@ -88,10 +88,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int[] login(String username, String password) {
+    public Object[] login(String username, String password) {
         User user = userMapper.selectByAccount(username);
         if(user!=null&&user.getPassword().equals(password)){
-            return new int[]{user.getUserid(),user.getPower()};
+            return new Object[]{user.getUserid(),user.getPower(),user.getUsername()};
         }else{
             return null;
         }

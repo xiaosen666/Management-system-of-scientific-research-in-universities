@@ -12,8 +12,20 @@
         <result column="t_name" property="t_name"/>
     </resultMap>
 
+    <resultMap id="P_Map" type="com.jiudian.manage.model.Project">
+        <result column="pid" property="pid"/>
+        <result column="name" property="name"/>
+        <result column="ID" property="ID"/>
+        <result column="money" property="money"/>
+        <result column="state" property="state"/>
+        <result column="t_name" property="t_name"/>
+        <result column="userid" property="userid"/>
+        <result column="gm_admin" property="gm_admin"/>
+        <result column="checkDate" property="date"/>
+    </resultMap>
+
     <insert id="Insert_Op_app" parameterType="com.jiudian.manage.model.Opening_app">
-        insert into op_application (p_name,your_name,your_id,phone,p_type,t_name,state) values (#{p_name},#{your_name},#{your_id},#{phone},#{p_type},#{t_name},#{state})
+        insert into op_application (p_name,your_name,your_id,phone,p_type,t_name,state,money,uid) values (#{p_name},#{your_name},#{your_id},#{phone},#{p_type},#{t_name},#{state},#{money},#{uid})
     </insert>
     <select id="get_Op_app" resultMap="Op_appMap">
         select * from op_application
@@ -24,4 +36,11 @@
     <select id="Get_checked" resultType="com.jiudian.manage.model.Opening_app">
         select * from op_application where application_id=#{p_id}
     </select>
+    <update id="Edit_money_State" >
+        update project set state=#{state},gm_admin=#{gm_admin},checkDate=#{checkDate} where pid=#{p_id}
+    </update>
+    <select id="Get_all_checked" resultMap="P_Map">
+        select * from project
+    </select>
+
 </mapper>

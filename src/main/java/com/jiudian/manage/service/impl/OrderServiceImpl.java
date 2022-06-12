@@ -12,6 +12,7 @@ import com.jiudian.manage.until.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -101,14 +102,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getAllOrder(int pageNum, int pageSize) {
+    public List<Order> getAllOrder(int pageNum, int pageSize, HttpServletRequest request) {
         PageHelper.startPage(pageNum,pageSize);
-        return orderMapper.getAllUser();
+        return orderMapper.getAllUser(request.getSession().getAttribute("this_userid").toString());
     }
 
     @Override
-    public List<Order> get_e_AllOrder(int pageNum, int pageSize) {
+    public List<Order> get_e_AllOrder(int pageNum, int pageSize,HttpServletRequest request) {
         PageHelper.startPage(pageNum,pageSize);
-        return orderMapper.get_e_AllUser();
+        return orderMapper.get_e_AllUser(request.getSession().getAttribute("this_userid").toString());
     }
 }

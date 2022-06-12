@@ -6,9 +6,14 @@
         <result column="name" property="name"/>
         <result column="num" property="num"/>
         <result column="phone" property="phone"/>
+        <result column="message" property="message"/>
+        <result column="lendDate" property="lendDate"/>
+        <result column="backDate" property="backDate"/>
+        <result column="equiment" property="equiment"/>
+        <result column="checkUname" property="checkUname"/>
     </resultMap>
     <insert id="Insert_a_record" parameterType="com.jiudian.manage.model.Lend">
-        insert into lend (userid,name,num,phone,message) values (#{userid},#{name},#{num},#{phone},#{message})
+        insert into lend (userid,name,num,phone,message,lendDate,backDate,equiment,checkUname) values (#{userid},#{name},#{num},#{phone},#{message},#{lendDate},#{backDate},#{equiment},#{checkUname})
     </insert>
     <select id="Get_lend_list" parameterType="java.lang.String" resultMap="LendMap">
         select * from lend where userid=#{userid}
@@ -17,4 +22,10 @@
     <select id="Get_all_lend_list" resultMap="LendMap">
         select * from lend
     </select>
+    <update id="Setcheckname">
+        update lend set checkUname=#{uname} where lendid=#{lendid}
+    </update>
+    <delete id="delect_lend">
+        delete from lend where lendid=#{lid}
+    </delete>
 </mapper>

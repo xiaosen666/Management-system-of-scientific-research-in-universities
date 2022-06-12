@@ -11,10 +11,12 @@
 
 <body>
 
-<div class="col-md-9 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 2rem">
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover" style="margin-top: 10px" id="orderList">
-    <tr><th>项目申请人</th><th>学号</th><th>开始时间</th><th>结束时间</th><th>申请经费金额</th><th>状态</th><th>操作</th></tr>
+<div class="col-md-12 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 2rem;display: flex;flex-direction: column">
+
+  <div class="col-md-12  " >
+  <div class="table-responsive" style="width: auto">
+    <table class="table table-bordered table-hoverb text-nowrap" style="margin-top: 10px;" id="orderList">
+    <tr class="table-primary"><th>项目申请人</th><th>学号</th><th>开始时间</th><th>结束时间</th><th>申请经费金额</th><th>状态</th><th>操作</th></tr>
     </table>
     <div class="col-md-12">
       <form class="form-inline">
@@ -31,26 +33,30 @@
       </form>
     </div>
   </div>
+  </div>
+  <div class="col-md-9 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 2rem;display: flex;">
+    <div class="col-md-5 col-xs-5 nopadding">
+      <ul class="list-group">
+        <li class="list-group-item" style="color:black !important;border: 0.5px  solid #C8C8BF">
+
+          经费总金额:
+          <span class="badge" id="totalMoney"> </span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-5 col-xs-5 nopadding" style="float: right;margin-left: 20px;">
+      <ul class="list-group">
+        <li class="list-group-item"  style="color:black !important;border: 0.5px solid #C8C8BF">
+
+          总项目数:
+          <span class="badge" id="totalRoom"> </span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div class="col-md-3 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 20px">
-  <div class="col-md-8 col-xs-6 nopadding">
-    <ul class="list-group">
-      <li class="list-group-item" style="color:black !important;border: 0.5px  solid #C8C8BF">
-        <span class="badge" id="totalMoney"> </span>
-        经费总金额
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-8 col-xs-6 nopadding">
-    <ul class="list-group">
-      <li class="list-group-item"  style="color:black !important;border: 0.5px solid #C8C8BF">
-        <span class="badge" id="totalRoom"> </span>
-        总项目数
-      </li>
-    </ul>
-  </div>
-</div>
+
 
 </body>
 </html>

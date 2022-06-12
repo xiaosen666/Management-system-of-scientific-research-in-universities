@@ -48,7 +48,7 @@ function getStaffList(){
 					$("#pre").css("display","block");
 					$("#next").css("display","block");
 					$("#staffList").empty();
-					$("#staffList").append("<tr><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>")
+					$("#staffList").append("<tr class=\"table-primary\"><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>")
 					for(i in list){
 						if(list[i].power=="0") {
 							power="管理员";

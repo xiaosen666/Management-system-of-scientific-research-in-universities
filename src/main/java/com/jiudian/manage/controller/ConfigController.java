@@ -1,8 +1,11 @@
 package com.jiudian.manage.controller;
 
 import com.jiudian.manage.mapper.End_appMapper;
+import com.jiudian.manage.mapper.Op_appMapper;
 import com.jiudian.manage.model.Config;
 import com.jiudian.manage.model.End_app;
+import com.jiudian.manage.model.Opening_app;
+import com.jiudian.manage.model.Project;
 import com.jiudian.manage.service.ConfigService;
 import com.jiudian.manage.until.State;
 import com.jiudian.manage.until.StateSignal;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +26,8 @@ public class ConfigController {
     ConfigService configService;
     @Autowired
     End_appMapper end_appMapper;
+    @Autowired
+    Op_appMapper op_appMapper;
 
     /**
      *
@@ -29,13 +35,19 @@ public class ConfigController {
      */
     @RequestMapping(value = "/getConfig.do")
     public Map getConfig(HttpServletRequest request){
-        List<End_app> end_app_list = end_appMapper.get_End_app();
+        List<Project> p_List = op_appMapper.Get_all_checked();
+        List<Opening_app> opening_appList=new ArrayList<>();
+        for(Project i:p_List)
+        {
+            opening_appList.add(op_appMapper.Get_checked(String.valueOf(i.getPid())));
+        }
+
         StateSignal signal = new StateSignal();
-        if(end_app_list!=null){
+        if(opening_appList!=null){
             signal.put(State.SuccessCode);
             signal.put(State.SuccessMessage);
-            signal.put("config",end_app_list);
-            signal.put("ad_name",request.getSession().getAttribute("this_userid"));
+            signal.put("p_List",p_List);
+            signal.put("op_List",opening_appList);
         }else {
             signal.put(State.ErrorCode);
             signal.put(State.ErrorMessage);
